@@ -1,0 +1,4 @@
+rootProject.name = 'hexagonal-functional'
+include 'domain'
+include 'basic-infra'
+
