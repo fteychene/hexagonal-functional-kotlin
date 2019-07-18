@@ -26,6 +26,17 @@ dependencies {
     compile("io.arrow-kt:arrow-extras-extensions:$arrowVersion")
     kapt("io.arrow-kt:arrow-meta:$arrowVersion")
     compile("io.arrow-kt:arrow-optics:$arrowVersion")
+
+    compile("io.arrow-kt:arrow-effects-data:$arrowVersion")
+    compile("io.arrow-kt:arrow-effects-extensions:$arrowVersion")
+    compile("io.arrow-kt:arrow-effects-io-extensions:$arrowVersion")
+    compile("io.arrow-kt:arrow-optics:$arrowVersion")
+    compile("io.arrow-kt:arrow-effects-rx2-data:$arrowVersion")
+    compile("io.arrow-kt:arrow-effects-rx2-extensions:$arrowVersion")
+    compile("io.reactivex.rxjava2:rxjava:2.2.8")
+    compile("io.arrow-kt:arrow-effects-reactor-data:$arrowVersion")
+    compile("io.arrow-kt:arrow-effects-reactor-extensions:$arrowVersion")
+    compile("io.projectreactor:reactor-core:3.2.8.RELEASE")
 }
 
 tasks.withType<KotlinCompile> {

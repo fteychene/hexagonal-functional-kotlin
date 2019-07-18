@@ -8,19 +8,14 @@ import arrow.data.fix
 
 sealed class Error
 
-
-fun <F> domain(initialValue: Int) = ReaderT<F, Context<F>, Either<Error, String>> {
-    it.run {
-        EitherT.monad<F, Error>(monadDefer).run {
-            binding {
-                logger.log("Load value").bind()
-                val result = dataFetcher.loadValues(initialValue)
-                        .map { it * 2 }.bind()
-                logger.log("Insert in database").bind()
-                repository.persist(result).bind()
-            }.fix().value()
-        }
+fun <F> domain(initialValue: Int) = ReaderT<F, Context<F>, Either<Error, String>> { ctx ->
+    EitherT.monad<F, Error>(ctx).run {
+        binding {
+            ctx.log("Load value").bind()
+            val result = ctx.loadValues(initialValue)
+                    .map { it * 2 }.bind()
+            ctx.log("Insert in database").bind()
+            ctx.persist(result).bind()
+        }.fix().value()
     }
 }
-
-
